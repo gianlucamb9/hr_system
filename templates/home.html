@@ -6,7 +6,7 @@
     <div class="row justify-content-center align-items-center g-2 mt-3">
         <div class="col">
             {% if user.is_authenticated %}
-                <h1>Welcome, {{user.username}}</h1>
+                <h1>Welcome, {{user.username}}!</h1>
             {% else %}
             <div style="display: flex; gap: 25px; margin-left: 25px;">
                 <h2>You need to <a href="{% url "login" %}"><button type="button" class="btn btn-primary">login</button></a> first...</h2>
