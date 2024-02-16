@@ -1,0 +1,45 @@
+{% extends "master.html" %}
+    
+{% block title %}All Employees{% endblock title %}
+
+{% block content %}
+    <div style="display: flex; gap: 25px;">
+        <h2>Employees</h2>
+        {% if perms.employees.can_edit %}
+        <a href="{% url "add" %}"><button type="button" class="btn btn-primary">Add Employee</button></a>
+        {% endif %}
+    </div>
+    <br>
+    <table class="table table-hover">
+        <thead class="table-primary">
+            <tr>
+                <th scope="col">First Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone</th>
+                <th scope="col">Department</th>
+                <th scope="col">Year of Hire</th>
+                <th scope="col" colspan="3">Options</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in elist %}
+            <tr class="table-light">
+                <td scope="row">{{employee.fname}}</td>
+                <td>{{employee.lname}}</td>
+                <td>{{employee.email}}</td>
+                <td>{{employee.phone}}</td>
+                <td>{{employee.department}}</td>
+                <td>{{employee.year}}</td>
+                {% if perms.employees.can_view %}
+                <td><a class="btn btn-outline-primary" href="employee/{{employee.id}}">Details</a></td>
+                {% endif %}
+                {% if perms.employees.can_edit %}
+                <td><a class="btn btn-outline-danger" href="{% url "delete" employee.id%}">Delete</a></td>
+                <td><a class="btn btn-outline-success" href="{% url "edit" employee.id %}">Edit</a></td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock content %}

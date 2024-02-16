@@ -1,0 +1,17 @@
+{% extends "master.html" %}
+
+{% block title %}Employee Details{% endblock title %}
+
+{% block content %}
+    <ul>
+        <h1>{{employee.fname}} {{employee.lname}}</h1>
+        <h3>{{employee.department}}</h3>
+        <br>
+        <p class="col"><strong>Email:</strong> {{employee.email}}</p>
+        <p class="col"><strong>Phone: </strong>{{employee.phone}}</p>
+        <p class="col"><strong>Year of Hire: </strong>{{employee.year}}</p>
+        <p class="col"><strong>Base Salary: </strong>${{employee.salary}}</p>
+        <p class="col"><strong>Real Salary: </strong>${{employee.rsalary}}</p>
+        <a href="/elist"><button type="button" class="btn btn-primary">Back to all employees</button></a>
+    </ul>
+{% endblock content %}

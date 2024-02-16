@@ -1,0 +1,22 @@
+{% extends "master.html" %}
+
+{% block title %}Register{% endblock title %}
+
+{% block content %}
+{% if perms.employees.can_edit %}
+    <h1>Staff Registration</h1>
+    <div class="row justify-content-center align-items-center g-2 mt-3">
+        <div class="col">
+            <form method="POST">
+                {% csrf_token %}
+                {{form}}
+                <br>
+                <button type="submit" class="btn btn-primary">Register</button>
+            </form>
+        </div>
+    </div>
+{% else %}
+    <h2>You don't have permissions to register a staff member. Please, contact admin.</h2>
+{% endif %}
+
+{% endblock content %}

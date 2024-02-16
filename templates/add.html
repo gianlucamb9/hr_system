@@ -1,0 +1,44 @@
+{% extends "master.html" %}
+
+{% block title %}Add Employee{% endblock title %}
+
+{% block content %}
+    <h2>Add Employee</h2>
+    <div class = "col-6">
+        <form method="POST">
+            {% csrf_token %}
+            <br>
+            <div class="form-floating mb-3">
+                {{form.fname}}
+                <label for="fname">Enter first Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{form.lname}}
+                <label for="lname">Enter last Name</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{form.email}}
+                <label for="email">Enter email</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{form.phone}}
+                <label for="phone">Enter phone Number</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{form.department}}
+                <label for="department">Enter department</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{form.year}}
+                <label for="year">Enter year of hire</label>
+            </div>
+            <div class="form-floating mb-3">
+                {{form.salary}}
+                <label for="salary">Enter base salary</label>
+            </div>
+            <div>
+                <button type="submit" class="btn btn-primary">Add Employee</button>
+            </div>
+        </form>
+    </div>
+{% endblock content %}
